@@ -28,6 +28,9 @@ contract MedianOracle is Ownable, IOracle {
     // Addresses of providers authorized to push reports.
     address[] public providers;
 
+    // Address of the target asset.
+    address public targetAsset;
+
     // Reports indexed by provider address. Report[0].timestamp > 0
     // indicates provider existence.
     mapping (address => Report[2]) public providerReports;
@@ -108,6 +111,18 @@ contract MedianOracle is Ownable, IOracle {
     {
         require(minimumProviders_ > 0);
         minimumProviders = minimumProviders_;
+    }
+
+    /**
+     * @notice Sets the asset contract address to track the price.
+     * @param targetAsset_ Address of the asset token.
+     */
+    function setTargetAsset(
+        address targetAsset_)
+        external
+        onlyOwner
+    {
+        targetAsset = targetAsset_;
     }
 
     /**
@@ -194,10 +209,10 @@ contract MedianOracle is Ownable, IOracle {
         }
 
         if (size < minimumProviders) {
-            return (0, false);
+            return (0, targetAsset, false);
         }
 
-        return (Select.computeMedian(validReports, size), true);
+        return (Select.computeMedian(validReports, size), targetAsset, true);
     }
 
     /**
