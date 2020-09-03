@@ -7,7 +7,7 @@ import "./lib/Select.sol";
 
 
 interface IOracle {
-    function getData() external returns (uint256, bool);
+    function getData() external returns (uint256, address, bool);
 }
 
 
@@ -168,7 +168,7 @@ contract MedianOracle is Ownable, IOracle {
     */
     function getData()
         external
-        returns (uint256, bool)
+        returns (uint256, address, bool)
     {
         uint256 reportsCount = providers.length;
         uint256[] memory validReports = new uint256[](reportsCount);

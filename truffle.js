@@ -13,7 +13,7 @@ module.exports = {
       network_id: 3,
       gas: 3000000,
       gasPrice: 10000000000
-    },
+    }
   },
   mocha: {
     enableTimeouts: false
