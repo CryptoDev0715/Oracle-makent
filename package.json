@@ -1,22 +1,14 @@
 {
   "name": "market-oracle",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Ethereum smart contracts to aggregate exchange rates from various sources",
   "keywords": [
     "ethereum",
     "smart-contracts",
     "solidity"
   ],
-  "homepage": "https://github.com/ampleforth/market-oracle#readme",
-  "bugs": {
-    "url": "https://github.com/ampleforth/market-oracle/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ampleforth/market-oracle.git"
-  },
   "license": "ISC",
-  "author": "dev-support@ampleforth.org",
+  "author": "elite-dev-1012",
   "scripts": {
     "coverage": "npx frg-coverage",
     "precommit": "./scripts/pre-commit.sh",
